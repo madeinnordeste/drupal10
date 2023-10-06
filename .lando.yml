@@ -1,13 +1,13 @@
-name: drupalten
+name: toremove
 recipe: drupal10
 config:
   webroot: web
   database: mysql:8.0
 proxy:
   pma:
-    - pma.drupalten.lndo.site
+    - pma.toremove.lndo.site
   mailhog:
-    - mail.drupalten.lndo.site
+    - mail.toremove.lndo.site
 services:
   appserver:
     build:
@@ -26,7 +26,7 @@ services:
         CONFIG_SYNC: local
         # Support debugging Drush with XDEBUG.
         PHP_IDE_CONFIG: "serverName=appserver"
-        DRUSH_OPTIONS_URI: "https://drupalten.lndo.site"
+        DRUSH_OPTIONS_URI: "https://toremove.lndo.site"
         # LANDO_HOST_IP: host.docker.internal
         # XDEBUG_CONFIG: client_host=host.docker.internal
   node:
@@ -90,7 +90,7 @@ tooling:
       - cp -Rfv config/env/development.services.yml web/sites/default/
       - composer install      
       - drush cr -y
-      #- drush cset system.site uuid "501bca65-9238-4564-93ec-50732a2b9e29" -y 
+      - drush cset system.site uuid "bb511290-e696-4b56-8d1d-c63334fbbe41" -y 
       - drush edel shortcut_set -y
       - drush upwd admin admin
       - drush updb -y
